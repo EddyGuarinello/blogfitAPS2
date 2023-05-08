@@ -1,11 +1,18 @@
 import React from 'react';
 import './style.scss';
 import Nav from '../../components/nav'
+import Header from '../../components/header';
+import Artigos from './components/artigos';
 
 function Inicio() {
   return (
     <div className="App">
-     <Nav></Nav>
+      <Nav></Nav>
+      <Header></Header>
+      <section id='sectionArtigos'>
+        <Artigos></Artigos>
+      </section>
+      
     </div>
   );
 }

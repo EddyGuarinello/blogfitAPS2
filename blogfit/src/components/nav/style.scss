@@ -1,3 +1,4 @@
+$pageWidth:100vw;
 *{
     font-family: 'Raleway';
     font-style: normal;
@@ -8,16 +9,32 @@
     align-items: center;
 }
 #navWrap{
-    width: 100%;
-    height: 115px;
+    width: $pageWidth*0.8;
+    padding-left: $pageWidth*0.1;
+    padding-right: $pageWidth*0.1;
+    height: 10vh;
     right: 0;
     justify-content: space-between;
-    background-color: rgb(33, 53, 73);
-    border-bottom: 2px solid black;
+    background-color: rgb(255, 255, 255);
 }
 .logoNav{
     width: 100px;
     border-radius: 50%;
     margin-left: 100px;
     margin-right: 200px;
+}
+#tituloLogo{
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 40px;
+    display: inline-block;
+}
+#lupa{
+    font-size: 25px;
+    color: rgb(85, 81, 81);
+    text-align: center;
+}
+#lupa:hover{
+    font-size: 30px;
+    color: rgb(218, 214, 26);
+    cursor: pointer;
 }
