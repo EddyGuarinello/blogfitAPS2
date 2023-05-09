@@ -1,12 +1,9 @@
-html,body{
-    width: 100vw;
-}
-#sectionArtigos{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-image: url('../../../public/imgs/capa.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+#sectionArtigos {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-image: url("../../../public/imgs/capa.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

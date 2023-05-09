@@ -27,6 +27,7 @@ $pageWidth:100vw;
     font-family: 'Bruno Ace SC', cursive;
     font-size: 40px;
     display: inline-block;
+    user-select: none;
 }
 #tituloLogo:hover{
     cursor: pointer;

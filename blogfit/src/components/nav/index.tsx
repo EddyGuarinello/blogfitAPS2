@@ -16,7 +16,6 @@ return(
             </span>
         </div>
     </nav>
-)
-}
+)}
 
 export default Nav
