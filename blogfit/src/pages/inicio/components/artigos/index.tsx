@@ -4,6 +4,7 @@ import { AiFillLike } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import ReactMarkdown from "react-markdown";
 
 interface Artigo {
   Id: string;
@@ -56,7 +57,10 @@ function Artigos() {
                 </div>
 
                 <div id="corpoArtigo">
-                  <p>{item.Corpo.slice(0, 355)} ...</p>
+                  {/* <p>{item.Corpo.slice(0, 355)} ...</p> */}
+                  <ReactMarkdown>
+                    {item.Corpo.slice(0, 355) + " ..."}
+                  </ReactMarkdown>
                 </div>
 
                 <div id="footerArtigo">

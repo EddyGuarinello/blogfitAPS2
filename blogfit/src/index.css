@@ -32,7 +32,6 @@ s,
 samp,
 small,
 strike,
-strong,
 sub,
 sup,
 tt,
@@ -99,10 +98,6 @@ menu,
 nav,
 section {
   display: block;
-}
-ol,
-ul {
-  list-style: none;
 }
 blockquote,
 q {

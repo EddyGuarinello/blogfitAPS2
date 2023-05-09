@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.scss";
+import style from "./Artigo.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -39,22 +39,21 @@ function Artigo() {
     <>
       <Nav></Nav>
       <Header nomePagina="artigo"></Header>
-      <section id="sectionArtigoWrap">
-        <div id="artigoBox">
-          <div id="menuArtigo">
-            <div className="menuItem">#{artigo.Categoria}</div>
+      <section id={style.sectionArtigoWrap}>
+        <div id={style.artigoBox}>
+          <div id={style.menuArtigo}>
+            <div className={style.menuItem}>#{artigo.Categoria}</div>
             <h1>{artigo.Titulo}</h1>
-            <div className="menuItem">
-              <span id="likeArtigo">
+            <div className={style.menuItem}>
+              <span id={style.likeArtigo}>
                 <AiFillLike />
                 {artigo.Likes}
               </span>
             </div>
           </div>
 
-          <div id="corpoArtigoBox">
-            <div id="conteudoArtigo">
-              {/* <p>{artigo.Corpo}</p> */}
+          <div id={style.corpoArtigoBox}>
+            <div id={style.conteudoArtigo}>
               <ReactMarkdown>{artigo.Corpo}</ReactMarkdown>
             </div>
           </div>

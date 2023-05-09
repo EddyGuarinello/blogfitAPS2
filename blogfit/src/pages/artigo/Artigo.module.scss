@@ -14,11 +14,11 @@ $minHeightBox: 78vh;
   width: 75%;
   min-height: $minHeightBox;
   border: 1px solid black;
-  background-color: rgba(182, 212, 209, 0.958);
+  background-color: rgba(255, 255, 255, 0.958);
 }
 #menuArtigo {
   width: 100%;
-  height: 10vh;
+  height: 14vh;
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
@@ -52,4 +52,17 @@ $minHeightBox: 78vh;
 }
 #conteudoArtigo {
   width: 60%;
+}
+
+// Estilos para o html renderizado.
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
