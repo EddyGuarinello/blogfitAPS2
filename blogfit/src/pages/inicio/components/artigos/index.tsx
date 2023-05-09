@@ -17,6 +17,7 @@ interface Artigo {
   }
 
 function Artigos() {
+    const navigate = useNavigate();
     const [artigos, setArtigos] = useState<Artigo[]>([]);
     useEffect(() => {
         async function obterDadosDaApi() {
@@ -48,7 +49,7 @@ function Artigos() {
                             </div>
                         </div>
                         <div id='artigo'>
-                            <div id='tituloArtigo'>
+                            <div onClick={() => navigate('/artigo'+item.Link)}   id='tituloArtigo'>
                                 <h2>{item.Titulo}</h2>
                             </div>
 
@@ -57,7 +58,7 @@ function Artigos() {
                             </div>
                             
                             <div id='footerArtigo'>
-                                <p>Ler Mais</p>
+                                <p onClick={() => navigate('/artigo'+item.Link)}>Ler Mais</p>
                             </div>
                         </div>
                     </div>

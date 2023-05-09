@@ -9,7 +9,7 @@ function Inicio() {
   return (
     <div className="App">
       <Nav></Nav>
-      <Header></Header>
+      <Header nomePagina='artigos'></Header>
       <section id='sectionArtigos'>
         <Artigos></Artigos>
       </section>

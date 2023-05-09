@@ -6,4 +6,12 @@
     justify-content: center;
     align-items: center;
     color: white;
+    font-weight: bolder;
+}
+#loginWrap:hover{
+cursor: pointer;
+}
+#loginWrap:active{
+    background-color: white;
+    color: black;
 }

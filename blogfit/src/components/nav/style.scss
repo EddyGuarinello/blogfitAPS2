@@ -28,13 +28,23 @@ $pageWidth:100vw;
     font-size: 40px;
     display: inline-block;
 }
+#tituloLogo:hover{
+    cursor: pointer;
+}
+#searchBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 #lupa{
     font-size: 25px;
-    color: rgb(85, 81, 81);
+    color: rgb(0, 0, 0);
     text-align: center;
 }
 #lupa:hover{
-    font-size: 30px;
-    color: rgb(218, 214, 26);
     cursor: pointer;
+}
+#lupa:active{
+    color: red;
 }

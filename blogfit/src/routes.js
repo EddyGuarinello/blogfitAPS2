@@ -6,6 +6,10 @@ export default function AppRouter(){
         <Router>
             <Routes>
                 <Route path='/' element={<Inicio />}></Route>
+                {/* <Route path='/logar' element={<Logar />}></Route> */}
+                {/* <Route path='/criar' element={<Criar />}></Route> */}
+                {/* <Route path='/contato' element={<Contato />}></Route> */}
+                {/* <Route path='/contato' element={<Contato />}></Route> */}
             </Routes>
         </Router>
     );
