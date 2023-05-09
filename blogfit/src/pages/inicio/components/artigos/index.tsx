@@ -53,10 +53,7 @@ function Artigos() {
                             </div>
 
                             <div id='corpoArtigo'>
-                                <p>{item.Corpo}</p>
-                                <p>
-                                    ...
-                                </p>
+                                <p>{item.Corpo} ...</p>
                             </div>
                             
                             <div id='footerArtigo'>
