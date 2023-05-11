@@ -1,11 +1,52 @@
 import React from "react";
 import style from "./Criar.module.scss";
 import MDEditor from "@uiw/react-md-editor";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Nav from "../../components/nav";
 import Header from "../../components/header";
 
+// function checkToken() {
+//   const token = localStorage.getItem("token");
+//   return fetch("https://sua-api.com/validar-token", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${token}`,
+//     },
+//   }).then((response) => {
+//     if (!response.ok) {
+//       throw new Error("Token inválido");
+//     }
+//     return true;
+//   });
+// }
+
 function Criar() {
+  const [tokenValido, setTokenValido] = useState(false);
+
+  useEffect(() => {
+    async function verificaToken() {
+      const response = await fetch(
+        "https://api-login-blogfit.vercel.app/validateToken",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token: localStorage.getItem("token") }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.tokenValido) {
+        setTokenValido(true);
+      }
+    }
+
+    verificaToken();
+  }, []);
+
   const [value, setValue] = useState<string>("");
 
   const handleChange = (
@@ -14,6 +55,7 @@ function Criar() {
   ) => {
     setValue(value);
   };
+
   return (
     <>
       <Nav></Nav>
@@ -67,7 +109,7 @@ function Criar() {
             <input id={style.tituloForm} type="text" />
           </div>
           <div id={style.criarButtonWrap}>
-            <div id={style.criarButton}>Criar!</div>
+            {tokenValido && <div id={style.criarButton}>Criar!</div>}
           </div>
         </div>
         <div id={style.editorWrap}>

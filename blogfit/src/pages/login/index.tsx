@@ -10,6 +10,7 @@ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 }
 
 function enviarDados() {
+  const token = localStorage.getItem("token");
   interface SubmitLogin {
     username: string;
     password: string;
@@ -28,10 +29,15 @@ function enviarDados() {
     body: JSON.stringify(usuario),
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      localStorage.setItem("token", data.token);
+      console.log(data);
+      window.location.href = "https://blogfit-aps-2.vercel.app/";
+    })
     .catch((error) => console.error(error));
 }
 

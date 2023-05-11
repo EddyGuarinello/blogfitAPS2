@@ -3,13 +3,17 @@ import "./style.scss";
 import LoginButton from "./components/loginButton";
 import { useNavigate } from "react-router-dom";
 
-interface nomePagina {
+interface infosPagina {
   nomePagina: string;
 }
 
-function Header(props: nomePagina) {
+function Header(props: infosPagina) {
   const navigate = useNavigate();
 
+  function hasToken() {
+    const token = localStorage.getItem("token");
+    return !!token;
+  }
   return (
     <div id="headerWrap" className="contentHeaderWidth">
       <span id="linksWrap">
@@ -35,7 +39,7 @@ function Header(props: nomePagina) {
       <div id="blankSpace"></div>
       <div id="buttonsSpace">
         <span onClick={() => navigate("/login")} id="buttonsTab">
-          <LoginButton></LoginButton>
+          <LoginButton logado={hasToken()}></LoginButton>
         </span>
       </div>
     </div>

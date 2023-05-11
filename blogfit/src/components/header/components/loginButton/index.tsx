@@ -1,15 +1,25 @@
 import React from "react";
-import './style.scss';
-import { useNavigate} from 'react-router-dom';
+import "./style.scss";
+import { useNavigate } from "react-router-dom";
 
-function LoginButton(){
-    const navigate = useNavigate();
+interface infos {
+  logado?: boolean;
+}
 
-    return(
-        <div onClick={() => navigate('/logar')} id="loginWrap">
-            <p>LOGIN</p>
+function LoginButton(props: infos) {
+  const navigate = useNavigate();
+
+  return (
+    <>
+      {props.logado ? (
+        ""
+      ) : (
+        <div onClick={() => navigate("/logar")} id="loginWrap">
+          <p>LOGIN</p>
         </div>
-    )
-    }
+      )}
+    </>
+  );
+}
 
-export default LoginButton
+export default LoginButton;
