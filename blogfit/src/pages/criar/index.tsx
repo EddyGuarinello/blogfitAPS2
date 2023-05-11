@@ -5,8 +5,43 @@ import { useState, useEffect } from "react";
 import Nav from "../../components/nav";
 import Header from "../../components/header";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 function Criar() {
+  function enviarDados() {
+    interface ArtigoBody {
+      Id: string;
+      Titulo: string;
+      Autor: string;
+      Corpo: string;
+      Likes: number;
+      Link: string;
+      Categoria: number;
+    }
+    const artigo = {
+      Id: uuidv4(),
+      Titulo: (
+        document.querySelector('input[name="titulo"]') as HTMLInputElement
+      ).value,
+      Autor: "endpoint em construção",
+      Corpo: value,
+      Likes: "0",
+      Link: " ",
+      Categoria: (
+        document.querySelector('input[name="categoria"]') as HTMLInputElement
+      ).value,
+    };
+    fetch("https://api-blogfit.vercel.app/artigos", {
+      method: "POST",
+      body: JSON.stringify(artigo),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
   const [tokenValido, setTokenValido] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
@@ -47,62 +82,64 @@ function Criar() {
       <Nav></Nav>
       <Header nomePagina="a"></Header>
       <div id={style.criarWrap}>
-        <div id={style.headerCriar}>
-          <div>
-            <h1 id={style.h1Topo}>Crie Seus Artigos</h1>
-          </div>
-          <div id={style.menuCriar} className={style.h2Form}>
-            <h2>Informe a Categoria do Artigo:</h2>
+        <form action="">
+          <div id={style.headerCriar}>
             <div>
-              <input
-                type="radio"
-                name="categoria"
-                id="categoriaNutricao"
-                value={"Nutrição"}
-              />
-              <label htmlFor="categoriaNutricao">Nutrição</label>
+              <h1 id={style.h1Topo}>Crie Seus Artigos</h1>
             </div>
-            <div>
-              <input
-                type="radio"
-                name="categoria"
-                id="categoriaSaude"
-                value={"Saúde"}
-              />
-              <label htmlFor="categoriaSaude">Saúde</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="categoria"
-                id="categoriaTreino"
-                value={"Treino"}
-              />
-              <label htmlFor="categoriaTreino">Treino</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="categoria"
-                id="categoriaDicas"
-                value={"Dicas"}
-              />
-              <label htmlFor="categoriaDicas">Dicas</label>
-            </div>
-          </div>
-          <div className={style.h2Form}>
-            <h2>Informe o Titulo do seu Artigo</h2>
-            <input id={style.tituloForm} type="text" />
-          </div>
-          <div id={style.criarButtonWrap}>
-            {tokenValido && <div id={style.criarButton}>Criar!</div>}
-            {!tokenValido && (
-              <div onClick={() => navigate("/login")} id={style.criarButton}>
-                Você precisa se logar!
+            <div id={style.menuCriar} className={style.h2Form}>
+              <h2>Informe a Categoria do Artigo:</h2>
+              <div>
+                <input
+                  type="radio"
+                  name="categoria"
+                  id="categoriaNutricao"
+                  value={"Nutrição"}
+                />
+                <label htmlFor="categoriaNutricao">Nutrição</label>
               </div>
-            )}
+              <div>
+                <input
+                  type="radio"
+                  name="categoria"
+                  id="categoriaSaude"
+                  value={"Saúde"}
+                />
+                <label htmlFor="categoriaSaude">Saúde</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="categoria"
+                  id="categoriaTreino"
+                  value={"Treino"}
+                />
+                <label htmlFor="categoriaTreino">Treino</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="categoria"
+                  id="categoriaDicas"
+                  value={"Dicas"}
+                />
+                <label htmlFor="categoriaDicas">Dicas</label>
+              </div>
+            </div>
+            <div className={style.h2Form}>
+              <h2>Informe o Titulo do seu Artigo</h2>
+              <input id={style.tituloForm} type="text" name="titulo" />
+            </div>
+            <div id={style.criarButtonWrap}>
+              {tokenValido && <div id={style.criarButton}>Criar!</div>}
+              {!tokenValido && (
+                <div onClick={() => navigate("/login")} id={style.criarButton}>
+                  Você precisa se logar!
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </form>
         <div id={style.editorWrap}>
           <MDEditor
             className={style.editor}
