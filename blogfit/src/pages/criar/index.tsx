@@ -26,11 +26,14 @@ function Criar() {
       Autor: "endpoint em construção",
       Corpo: value,
       Likes: "0",
-      Link: " ",
+      Link: (
+        document.querySelector('input[name="titulo"]') as HTMLInputElement
+      ).value.replace(/\s+/g, "-"),
       Categoria: (
         document.querySelector('input[name="categoria"]') as HTMLInputElement
       ).value,
     };
+    console.log(artigo);
     fetch("https://api-blogfit.vercel.app/artigos", {
       method: "POST",
       body: JSON.stringify(artigo),
@@ -131,7 +134,11 @@ function Criar() {
               <input id={style.tituloForm} type="text" name="titulo" />
             </div>
             <div id={style.criarButtonWrap}>
-              {tokenValido && <div id={style.criarButton}>Criar!</div>}
+              {tokenValido && (
+                <div onClick={enviarDados} id={style.criarButton}>
+                  Criar!
+                </div>
+              )}
               {!tokenValido && (
                 <div onClick={() => navigate("/login")} id={style.criarButton}>
                   Você precisa se logar!
