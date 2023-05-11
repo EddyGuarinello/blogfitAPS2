@@ -4,26 +4,11 @@ import MDEditor from "@uiw/react-md-editor";
 import { useState, useEffect } from "react";
 import Nav from "../../components/nav";
 import Header from "../../components/header";
-
-// function checkToken() {
-//   const token = localStorage.getItem("token");
-//   return fetch("https://sua-api.com/validar-token", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//   }).then((response) => {
-//     if (!response.ok) {
-//       throw new Error("Token inválido");
-//     }
-//     return true;
-//   });
-// }
+import { useNavigate } from "react-router-dom";
 
 function Criar() {
   const [tokenValido, setTokenValido] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     async function verificaToken() {
       const response = await fetch(
@@ -36,11 +21,12 @@ function Criar() {
           body: JSON.stringify({ token: localStorage.getItem("token") }),
         }
       );
-
       const data = await response.json();
 
-      if (data.tokenValido) {
+      if (data.valid) {
         setTokenValido(true);
+      } else {
+        localStorage.token = "";
       }
     }
 
@@ -110,6 +96,11 @@ function Criar() {
           </div>
           <div id={style.criarButtonWrap}>
             {tokenValido && <div id={style.criarButton}>Criar!</div>}
+            {!tokenValido && (
+              <div onClick={() => navigate("/login")} id={style.criarButton}>
+                Você precisa se logar!
+              </div>
+            )}
           </div>
         </div>
         <div id={style.editorWrap}>

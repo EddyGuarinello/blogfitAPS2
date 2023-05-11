@@ -14,7 +14,7 @@ function LoginButton(props: infos) {
       {props.logado ? (
         ""
       ) : (
-        <div onClick={() => navigate("/logar")} id="loginWrap">
+        <div onClick={() => navigate("/login")} id="loginWrap">
           <p>LOGIN</p>
         </div>
       )}
