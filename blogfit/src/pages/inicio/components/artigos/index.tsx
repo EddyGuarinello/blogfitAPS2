@@ -41,7 +41,7 @@ function Artigos() {
                   <div>
                     <p>Autor: {item.Autor}</p>
                   </div>
-                  <div>
+                  <div id="likesBox">
                     <span id="likes">
                       <AiFillLike /> {item.Likes}
                     </span>

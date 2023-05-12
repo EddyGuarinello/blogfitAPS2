@@ -6,15 +6,10 @@ import { v4 as uuidv4 } from "uuid";
 
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
-  console.log("You clicked submit.");
+  console.log("submit.");
 }
 
 function enviarDados() {
-  const token = localStorage.getItem("token");
-  interface SubmitLogin {
-    username: string;
-    password: string;
-  }
   const usuario = {
     username: (
       document.querySelector('input[name="email"]') as HTMLInputElement
@@ -29,7 +24,6 @@ function enviarDados() {
     body: JSON.stringify(usuario),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
   })
     .then((response) => response.json())
@@ -43,10 +37,10 @@ function enviarDados() {
 
 function Login() {
   return (
-    <div className="App">
+    <div>
       <Nav></Nav>
       <Header nomePagina="artigos"></Header>
-      <section id="sectionlogin">
+      <section id={style.sectionLogin}>
         <form onSubmit={handleSubmit} action="">
           <input
             className="inputInfoUser"

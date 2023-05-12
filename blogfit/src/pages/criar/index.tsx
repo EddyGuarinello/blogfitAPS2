@@ -91,7 +91,7 @@ function Criar() {
               <h1 id={style.h1Topo}>Crie Seus Artigos</h1>
             </div>
             <div id={style.menuCriar} className={style.h2Form}>
-              <h2>Informe a Categoria do Artigo:</h2>
+              <h2>Selecione a Categoria do Artigo:</h2>
               <div>
                 <input
                   type="radio"
@@ -140,8 +140,8 @@ function Criar() {
                 </div>
               )}
               {!tokenValido && (
-                <div onClick={() => navigate("/login")} id={style.criarButton}>
-                  Você precisa se logar!
+                <div onClick={() => navigate("/login")} id={style.buttonLogar} className={style.criarButton}>
+                  Você precisa se logar para criar artigos!
                 </div>
               )}
             </div>

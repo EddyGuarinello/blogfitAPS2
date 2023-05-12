@@ -4,55 +4,60 @@
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url("../../../public/imgs/capa.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #52cf2d;
+  // background-image: url("../../../public/imgs/capa.jpg");
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
 }
 #editorWrap,
 #headerCriar,
 #footerCriar {
-  width: 70vh;
+  width: 70vw;
 }
 #headerCriar h1 {
   text-align: center;
 }
 #editorWrap {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  min-height: 60vh;
+  min-height: 70vw;
 }
 .editor {
   width: 70vw;
+  margin-bottom: 40px;
 }
 .result {
   width: 70vw;
+  min-height: 100vh;
 }
 #criarButtonWrap {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
   margin-top: 15px;
 }
-#criarButton {
+.criarButton {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 65px;
   height: 40px;
-  border: 2px solid white;
+  border: 3px solid white;
   font-size: 20px;
   background-color: rgba(0, 0, 0, 0.53);
   color: white;
   user-select: none;
 }
-#criarButton:hover {
+#buttonLogar{
+  width: fit-content;
+  animation: trocaCor 2s linear infinite;
+}
+.criarButton:hover {
   cursor: pointer;
   background-color: black;
 }
-#criarButton:active {
+.criarButton:active {
   transform: scale(1.2);
 }
 input[type="radio"] {
@@ -75,10 +80,20 @@ h6 {
   font-size: 20px;
 }
 #tituloForm {
-  width: 100%;
+  width: 95%;
   height: 25px;
+  font-weight: bold;
 }
 #h1Topo {
   font-size: 50px;
   font-weight: bolder;
+}
+
+@keyframes trocaCor {
+  0% { border-color: blue; }
+  20% { border-color: green; }
+  40% { border-color: yellow; }
+  60% { border-color: orange; }
+  80% { border-color: pink; }
+  100% { border-color: blue; }
 }

@@ -45,6 +45,11 @@
   display: flex;
   justify-content: space-between;
 }
+#likesBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #likes {
   display: inline-block;
 }
