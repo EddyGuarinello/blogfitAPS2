@@ -30,7 +30,7 @@ function enviarDados() {
     .then((data) => {
       localStorage.setItem("token", data.token);
       console.log(data);
-      window.location.href = "https://blogfit-aps-2.vercel.app/";
+      // window.location.href = "https://blogfit-aps-2.vercel.app/";
     })
     .catch((error) => console.error(error));
 }
