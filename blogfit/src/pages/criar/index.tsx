@@ -135,7 +135,7 @@ function Criar() {
             </div>
             <div id={style.criarButtonWrap}>
               {tokenValido && (
-                <div onClick={enviarDados} id={style.criarButton}>
+                <div onClick={enviarDados} id={style.criarButton} className={style.criarButton}>
                   Criar!
                 </div>
               )}
