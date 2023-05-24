@@ -12,7 +12,11 @@ function Header(props: infosPagina) {
 
   function hasToken() {
     const token = localStorage.getItem("token");
-    return !!token;
+    if ((token as string).length <= 100) {
+      return false;
+    } else {
+      return true;
+    }
   }
   return (
     <div id="headerWrap" className="contentHeaderWidth">
@@ -29,16 +33,10 @@ function Header(props: infosPagina) {
         >
           Crie um artigo
         </a>
-        <a
-          onClick={() => navigate("/contato")}
-          id={props.nomePagina == "Contato" ? "Contato" : ""}
-        >
-          Fale Conosco
-        </a>
       </span>
       <div id="blankSpace"></div>
       <div id="buttonsSpace">
-        <span onClick={() => navigate("/login")} id="buttonsTab">
+        <span id="buttonsTab">
           <LoginButton logado={hasToken()}></LoginButton>
         </span>
       </div>

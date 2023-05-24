@@ -1,10 +1,23 @@
-#sectionlogin{
-    width: 100vw;
+#sectionlogin {
+  width: 100vw;
 }
-form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 50vh;
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+}
+#errorMessage {
+  text-align: center;
+  font-size: 20px;
+  background-color: red;
+  margin: 0;
+  margin-bottom: 20px;
+}
+#register {
+  color: blue;
+}
+#register:hover {
+  cursor: pointer;
 }

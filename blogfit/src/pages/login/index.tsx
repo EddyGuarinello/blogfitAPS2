@@ -3,47 +3,69 @@ import style from "./Login.module.scss";
 import Nav from "../../components/nav";
 import Header from "../../components/header";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
-  console.log("submit.");
-}
-
-function enviarDados() {
-  const usuario = {
-    username: (
-      document.querySelector('input[name="email"]') as HTMLInputElement
-    ).value,
-    password: (
-      document.querySelector('input[name="senha"]') as HTMLInputElement
-    ).value,
-  };
-  console.log(usuario);
-  fetch("https://api-login-blogfit.vercel.app/login", {
-    method: "POST",
-    body: JSON.stringify(usuario),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      localStorage.setItem("token", data.token);
-      console.log(data);
-      // window.location.href = "https://blogfit-aps-2.vercel.app/";
-    })
-    .catch((error) => console.error(error));
 }
 
 function Login() {
+  const navigate = useNavigate();
+
+  function enviarDados() {
+    const usuario = {
+      username: (
+        document.querySelector('input[name="email"]') as HTMLInputElement
+      ).value,
+      password: (
+        document.querySelector('input[name="senha"]') as HTMLInputElement
+      ).value,
+    };
+    setLoading(true);
+    try {
+      fetch("https://api-login-blogfit.vercel.app/login", {
+        method: "POST",
+        body: JSON.stringify(usuario),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.status === 400 || response.status === 401) {
+            setErrorLogin(true);
+            throw new Error("Usuário ou senha incorretos.");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          localStorage.setItem("token", data.token);
+          console.log(data);
+          window.location.href = "https://blogfit-aps-2.vercel.app/";
+        });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
   const [errorLogin, setErrorLogin] = useState(false);
+  const [loading, setLoading] = useState(false);
   return (
     <div>
       <Nav></Nav>
       <Header nomePagina="artigos"></Header>
       <section id={style.sectionLogin}>
         <form onSubmit={handleSubmit} action="">
+          <h2 id={style.errorMessage}>
+            {errorLogin === true ? "Usuário e/ou senha incorretos." : ""}
+          </h2>
+          <h2>
+            Não possui uma conta?{" "}
+            <span onClick={() => navigate("/register")} id={style.register}>
+              Registre-se
+            </span>
+          </h2>
           <input
             className="inputInfoUser"
             placeholder="   Email"
@@ -53,7 +75,7 @@ function Login() {
           <input
             className="inputInfoUser"
             placeholder="   Senha"
-            type="text"
+            type="password"
             name="senha"
           />
           <input
@@ -61,9 +83,9 @@ function Login() {
             value="Logar Usuario"
             type="button"
             onClick={enviarDados}
+            disabled={loading}
           />
         </form>
-        <h2>{errorLogin == true ? "Usuário ou senha incorretos." : ""}</h2>
       </section>
     </div>
   );

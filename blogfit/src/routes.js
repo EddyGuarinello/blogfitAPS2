@@ -4,7 +4,6 @@ import Artigo from "./pages/artigo";
 import Criar from "./pages/criar";
 import Login from "./pages/login";
 import Register from "./pages/register";
-import Contato from "./pages/contato";
 
 export default function AppRouter() {
   return (
@@ -15,7 +14,6 @@ export default function AppRouter() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/criar" element={<Criar />}></Route>
-        <Route path='/contato' element={<Contato />}></Route>
       </Routes>
     </Router>
   );

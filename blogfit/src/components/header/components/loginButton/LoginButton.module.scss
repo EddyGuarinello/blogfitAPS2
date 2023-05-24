@@ -1,0 +1,26 @@
+#loginWrap {
+  height: 4vh;
+  width: 4vh * 1.7;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bolder;
+  min-width: fit-content;
+  letter-spacing: normal;
+}
+#loginWrap:hover {
+  cursor: pointer;
+}
+#loginWrap:active {
+  background-color: white;
+  color: black;
+}
+#profile {
+  color: white;
+  font-size: 5vh;
+}
+#profile:hover {
+  cursor: pointer;
+}
