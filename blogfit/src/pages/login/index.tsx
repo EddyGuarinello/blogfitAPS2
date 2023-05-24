@@ -3,6 +3,7 @@ import style from "./Login.module.scss";
 import Nav from "../../components/nav";
 import Header from "../../components/header";
 import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
@@ -36,6 +37,7 @@ function enviarDados() {
 }
 
 function Login() {
+  const [errorLogin, setErrorLogin] = useState(false);
   return (
     <div>
       <Nav></Nav>
@@ -61,6 +63,7 @@ function Login() {
             onClick={enviarDados}
           />
         </form>
+        <h2>{errorLogin == true ? "Usuário ou senha incorretos." : ""}</h2>
       </section>
     </div>
   );
