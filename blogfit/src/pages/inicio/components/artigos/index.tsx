@@ -20,8 +20,11 @@ function Artigos() {
   const navigate = useNavigate();
   const [artigos, setArtigos] = useState<Artigo[]>([]);
   useEffect(() => {
+    let dadosArmazenados;
     async function obterDadosDaApi() {
-      let dadosArmazenados = sessionStorage.getItem("artigos");
+      sessionStorage.getItem("artigos")
+        ? (dadosArmazenados = sessionStorage.getItem("artigos"))
+        : (dadosArmazenados = "");
 
       if (dadosArmazenados) {
         // Se os dados estiverem armazenados
