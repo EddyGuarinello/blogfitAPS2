@@ -14,7 +14,7 @@ function LoginButton(props: infos) {
     <div>
       {props.logado ? (
         <CgProfile
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/profile")}
           id={style.profile}
         ></CgProfile>
       ) : (

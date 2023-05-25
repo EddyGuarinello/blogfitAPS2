@@ -49,7 +49,7 @@
   color: white;
   user-select: none;
 }
-#buttonLogar{
+#buttonLogar {
   width: fit-content;
   animation: trocaCor 2s linear infinite;
 }
@@ -90,10 +90,22 @@ h6 {
 }
 
 @keyframes trocaCor {
-  0% { border-color: blue; }
-  20% { border-color: green; }
-  40% { border-color: yellow; }
-  60% { border-color: orange; }
-  80% { border-color: pink; }
-  100% { border-color: blue; }
+  0% {
+    border-color: blue;
+  }
+  20% {
+    border-color: green;
+  }
+  40% {
+    border-color: yellow;
+  }
+  60% {
+    border-color: orange;
+  }
+  80% {
+    border-color: pink;
+  }
+  100% {
+    border-color: blue;
+  }
 }

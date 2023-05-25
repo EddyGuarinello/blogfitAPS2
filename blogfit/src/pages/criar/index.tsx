@@ -9,44 +9,52 @@ import { v4 as uuidv4 } from "uuid";
 
 function Criar() {
   function enviarDados() {
-    interface ArtigoBody {
-      Id: string;
-      Titulo: string;
-      Autor: string;
-      Corpo: string;
-      Likes: number;
-      Link: string;
-      Categoria: number;
+    if (clicked === true) {
+      return console.log("não permitido.");
     }
+    setClicked(true);
     const artigo = {
-      Id: uuidv4(),
-      Titulo: (
+      id: uuidv4(),
+      titulo: (
         document.querySelector('input[name="titulo"]') as HTMLInputElement
       ).value,
-      Autor: "endpoint em construção",
-      Corpo: value,
-      Likes: "0",
-      Link: (
+      autor: "Alguém",
+      corpo: value,
+      link: (
         document.querySelector('input[name="titulo"]') as HTMLInputElement
       ).value.replace(/\s+/g, "-"),
-      Categoria: (
+      categoria: (
         document.querySelector('input[name="categoria"]') as HTMLInputElement
       ).value,
     };
     console.log(artigo);
-    fetch("https://api-blogfit.vercel.app/artigos", {
+    fetch("https://api-login-blogfit.vercel.app/artigos", {
       method: "POST",
       body: JSON.stringify(artigo),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((response) => {
+        if (response.status === 400 || response.status === 401) {
+          setClicked(false);
+          setErrorCriar(true);
+          throw new Error("Falha ao criar artigo.");
+        }
+        setClicked(false);
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert("artigo criado!");
+        navigate("/");
+      })
       .catch((error) => console.error(error));
   }
+
   const [tokenValido, setTokenValido] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     async function verificaToken() {
       const response = await fetch(
@@ -63,6 +71,7 @@ function Criar() {
 
       if (data.valid) {
         setTokenValido(true);
+        console.log(data.payload);
       } else {
         localStorage.token = "";
       }
@@ -79,7 +88,8 @@ function Criar() {
   ) => {
     setValue(value);
   };
-
+  const [errorCriar, setErrorCriar] = useState(false);
+  const [clicked, setClicked] = useState(false);
   return (
     <>
       <Nav></Nav>
@@ -133,14 +143,25 @@ function Criar() {
               <h2>Informe o Titulo do seu Artigo</h2>
               <input id={style.tituloForm} type="text" name="titulo" />
             </div>
+            <h2 id={style.errorMessage}>
+              {errorCriar === true ? "Falha ao criar." : ""}
+            </h2>
             <div id={style.criarButtonWrap}>
               {tokenValido && (
-                <div onClick={enviarDados} id={style.criarButton} className={style.criarButton}>
+                <div
+                  onClick={enviarDados}
+                  id={style.criarButton}
+                  className={style.criarButton}
+                >
                   Criar!
                 </div>
               )}
               {!tokenValido && (
-                <div onClick={() => navigate("/login")} id={style.buttonLogar} className={style.criarButton}>
+                <div
+                  onClick={() => navigate("/login")}
+                  id={style.buttonLogar}
+                  className={style.criarButton}
+                >
                   Você precisa se logar para criar artigos!
                 </div>
               )}
@@ -148,6 +169,7 @@ function Criar() {
           </div>
         </form>
         <div id={style.editorWrap}>
+          <h2>Editor markdown</h2>
           <MDEditor
             className={style.editor}
             value={value}
@@ -159,6 +181,7 @@ function Criar() {
               color: "black",
             }}
           />
+          <h2>Preview do artigo</h2>
           <MDEditor.Markdown
             className={style.result}
             source={value}

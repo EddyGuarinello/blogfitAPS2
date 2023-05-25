@@ -28,7 +28,7 @@ function Artigo() {
   useEffect(() => {
     async function obterDadosDaApi() {
       const response = await fetch(
-        "https://api-blogfit.vercel.app/artigos/" + slug
+        "https://api-login-blogfit.vercel.app/artigos/" + slug
       );
       const data = await response.json();
       setArtigo(data[0]);

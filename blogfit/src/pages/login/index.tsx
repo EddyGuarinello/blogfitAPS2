@@ -15,9 +15,8 @@ function Login() {
 
   function enviarDados() {
     const usuario = {
-      username: (
-        document.querySelector('input[name="email"]') as HTMLInputElement
-      ).value,
+      email: (document.querySelector('input[name="email"]') as HTMLInputElement)
+        .value,
       password: (
         document.querySelector('input[name="senha"]') as HTMLInputElement
       ).value,
@@ -56,30 +55,31 @@ function Login() {
       <Nav></Nav>
       <Header nomePagina="artigos"></Header>
       <section id={style.sectionLogin}>
-        <form onSubmit={handleSubmit} action="">
+        <form id={style.formLogin} onSubmit={handleSubmit} action="">
           <h2 id={style.errorMessage}>
             {errorLogin === true ? "Usuário e/ou senha incorretos." : ""}
           </h2>
-          <h2>
+
+          <h2 id={style.contaH2}>
             Não possui uma conta?{" "}
             <span onClick={() => navigate("/register")} id={style.register}>
               Registre-se
             </span>
           </h2>
           <input
-            className="inputInfoUser"
+            className={style.inputInfoUser}
             placeholder="   Email"
             type="text"
             name="email"
           />
           <input
-            className="inputInfoUser"
+            className={style.inputInfoUser}
             placeholder="   Senha"
             type="password"
             name="senha"
           />
           <input
-            className="inputInfoUser"
+            id={style.button}
             value="Logar Usuario"
             type="button"
             onClick={enviarDados}

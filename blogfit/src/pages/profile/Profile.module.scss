@@ -1,0 +1,34 @@
+#profileFlexBox {
+  width: 100vw;
+  height: 84vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../public/imgs/capa.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#profileBox {
+  width: 50%;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(208, 240, 229, 0.911);
+  border: 1px solid black;
+}
+#profileIcon {
+  font-size: 100px;
+}
+.boxItems {
+  font-size: 30px;
+  text-align: center;
+}
+#logOut {
+  color: blue;
+}
+#logOut:hover {
+  cursor: pointer;
+}

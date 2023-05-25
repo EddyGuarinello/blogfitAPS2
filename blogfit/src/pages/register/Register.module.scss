@@ -1,0 +1,50 @@
+#sectionRegister {
+  width: 100vw;
+  height: 84vh;
+  background-image: url("../../../public/imgs/gym.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#formRegister {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  height: 250px;
+  border: 1.5px solid;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  color: white;
+}
+.inputInfoUser {
+  width: 70%;
+  height: 30px;
+  margin-bottom: 5%;
+  border: solid 1px;
+  border-radius: 1px;
+  text-align: center;
+}
+#buttonRegister {
+  border: 1px solid rgb(95, 95, 95);
+  background-color: rgb(0, 0, 0);
+  box-shadow: 10px;
+  color: rgb(255, 255, 255);
+  width: 30%;
+  height: 30px;
+  border-radius: 10px;
+}
+#buttonRegister:hover {
+  cursor: pointer;
+}
+#errorMessage {
+  text-align: center;
+  font-size: 20px;
+  background-color: red;
+  margin: 0;
+  margin-bottom: 20px;
+}
