@@ -12,7 +12,7 @@ function Header(props: infosPagina) {
 
   function hasToken() {
     const token = localStorage.getItem("token");
-    if ((token as string).length <= 100) {
+    if (!token) {
       return false;
     } else {
       return true;
