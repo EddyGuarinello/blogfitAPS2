@@ -14,37 +14,21 @@ interface Artigo {
   Likes: number;
   Link: string;
   Categoria: string;
+  dataDeCriacao: Date;
 }
 
 function Artigos() {
   const navigate = useNavigate();
   const [artigos, setArtigos] = useState<Artigo[]>([]);
   useEffect(() => {
-    let dadosArmazenados;
     async function obterDadosDaApi() {
-      sessionStorage.getItem("artigos")
-        ? (dadosArmazenados = sessionStorage.getItem("artigos"))
-        : (dadosArmazenados = "");
-
-      if (dadosArmazenados) {
-        // Se os dados estiverem armazenados
-        const dadosParseados = JSON.parse(dadosArmazenados);
-        setArtigos(dadosParseados);
-      } else {
-        // Caso contrário, busca os dados na API
-        const response = await fetch(
-          "https://api-login-blogfit.vercel.app/artigos"
-        );
-        const data = await response.json();
-        console.log(data);
-        const doisArtigos = data.slice(0, 2);
-        setArtigos(doisArtigos);
-
-        // Armazena os dados no cache da session
-        sessionStorage.setItem("artigos", JSON.stringify(doisArtigos));
-      }
+      const response = await fetch(
+        "https://api-login-blogfit.vercel.app/artigos"
+      );
+      const data = await response.json();
+      const doisArtigos = data.slice(0, 2);
+      setArtigos(doisArtigos);
     }
-
     obterDadosDaApi();
   }, []);
 
