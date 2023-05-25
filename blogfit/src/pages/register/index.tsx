@@ -6,6 +6,13 @@ import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const validateEmail = (email: string) => {
+  return !!String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
 function Register() {
   function enviarDados() {
     if (clicked === true) {
@@ -25,6 +32,11 @@ function Register() {
         document.querySelector('input[name="senha"]') as HTMLInputElement
       ).value,
     };
+    if (!validateEmail(usuario.email)) {
+      console.log("EMAIL ERRADO");
+      setClicked(false);
+      return;
+    }
     fetch("https://api-login-blogfit.vercel.app/register", {
       method: "POST",
       body: JSON.stringify(usuario),
@@ -64,7 +76,7 @@ function Register() {
           <input
             className={style.inputInfoUser}
             placeholder="   Email"
-            type="text"
+            type="email"
             name="email"
           />
           <input
@@ -82,7 +94,7 @@ function Register() {
           <input
             className={style.inputInfoUser}
             placeholder="   Senha"
-            type="text"
+            type="password"
             name="senha"
           />
           <input
