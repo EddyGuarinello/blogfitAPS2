@@ -88,7 +88,11 @@ h6 {
   font-size: 50px;
   font-weight: bolder;
 }
-
+#errorMessage {
+  background-color: red;
+  color: white;
+  width: fit-content;
+}
 @keyframes trocaCor {
   0% {
     border-color: blue;

@@ -144,7 +144,7 @@ function Criar() {
               <input id={style.tituloForm} type="text" name="titulo" />
             </div>
             <h2 id={style.errorMessage}>
-              {errorCriar === true ? "Falha ao criar." : ""}
+              {errorCriar === true ? "Falha ao criar. " : ""}
             </h2>
             <div id={style.criarButtonWrap}>
               {tokenValido && (
@@ -162,7 +162,7 @@ function Criar() {
                   id={style.buttonLogar}
                   className={style.criarButton}
                 >
-                  Você precisa se logar para criar artigos!
+                  Logue para criar artigos!
                 </div>
               )}
             </div>

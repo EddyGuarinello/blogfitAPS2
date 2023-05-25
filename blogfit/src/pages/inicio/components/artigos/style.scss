@@ -45,7 +45,7 @@
   display: flex;
   justify-content: space-between;
 }
-#likesBox{
+#likesBox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,4 +102,34 @@
 }
 #footerArtigo p:hover {
   cursor: pointer;
+}
+@media (max-width: 1600px) {
+}
+@media (max-width: 1200px) {
+}
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 480px) {
+  #wrapLayoutArtigo {
+    display: flex;
+    flex-direction: column;
+  }
+  .layoutArtigo {
+    width: auto;
+    margin-bottom: 30px;
+  }
+  #artigosWrap {
+    height: auto;
+    width: auto;
+  }
+  #corpoArtigo {
+    width: 90%;
+    height: auto;
+    letter-spacing: 1.2px;
+  }
+  #tituloArtigo {
+    font-size: medium;
+  }
 }

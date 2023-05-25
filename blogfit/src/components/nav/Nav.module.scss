@@ -1,0 +1,43 @@
+$pageWidth: 100vw;
+* {
+  font-family: "Raleway";
+  font-style: normal;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#navWrap {
+  width: $pageWidth * 0.8;
+  padding-left: $pageWidth * 0.1;
+  padding-right: $pageWidth * 0.1;
+  height: 10vh;
+  right: 0;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+}
+#tituloLogo {
+  font-family: "Bruno Ace SC", cursive;
+  font-size: 40px;
+  display: inline-block;
+  user-select: none;
+}
+#tituloLogo:hover {
+  cursor: pointer;
+}
+@media (max-width: 1600px) {
+}
+@media (max-width: 1200px) {
+}
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 480px) {
+  #navWrap {
+    text-align: center;
+    padding: 0;
+    width: auto;
+  }
+}

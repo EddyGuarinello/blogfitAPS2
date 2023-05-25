@@ -31,7 +31,7 @@ function Header(props: infosPagina) {
           onClick={() => navigate("/criar")}
           id={props.nomePagina == "Criar" ? "Criar" : ""}
         >
-          Crie um artigo
+          Criar artigo
         </a>
       </span>
       <div id="blankSpace"></div>
