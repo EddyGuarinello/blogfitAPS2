@@ -33,7 +33,7 @@ function Register() {
       ).value,
     };
     if (!validateEmail(usuario.email)) {
-      console.log("EMAIL ERRADO");
+      alert("EMAIL INVALIDO");
       setClicked(false);
       return;
     }
